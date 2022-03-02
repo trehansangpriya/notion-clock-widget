@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Clock Widget - Trehan Sangpriya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background-color: #191919;
+            color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main flex justify-center items-center w-full h-screen">
+        <div id="clock">
+            <div class="text-center text-3xl font-bold m-2" id="time">
+                Time Loading
+            </div>
+            <div class="text-center text-xl" id="date">
+                Date Loading
+            </div>
+        </div>
+    </div>
+    <script>
+        function currentTime() {
+            let date = new Date();
+            let hh = date.getHours();
+            let mm = date.getMinutes();
+            let ss = date.getSeconds();
+            let session = "AM";
+            let dow = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            ];
+            let month = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            ];
+            let day = date.getDate();
+
+            if (hh == 0) {
+                hh = 12;
+            }
+            if (hh > 12) {
+                hh = hh - 12;
+                session = "PM";
+            }
+
+            hh = hh < 10 ? "0" + hh : hh;
+            mm = mm < 10 ? "0" + mm : mm;
+            ss = ss < 10 ? "0" + ss : ss;
+
+            let currentDate =
+                dow[date.getDay()] + ", " + month[date.getMonth()] + " " + day;
+
+            let time = hh + ":" + mm + " " + session;
+
+            document.getElementById("time").innerText = time;
+            document.getElementById("date").innerText = currentDate;
+
+            let t = setTimeout(function () {
+                currentTime();
+            }, 1000);
+        }
+        currentTime();
+    </script>
+</body>
+
+</html>
