@@ -14,24 +14,33 @@
 
     <style>
         body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .dark {
             background-color: #191919;
             color: #f5f5f5;
-            font-family: 'Poppins', sans-serif;
+        }
+
+        .light {
+            background-color: #ffffff;
+            color: #191919;
         }
     </style>
 </head>
 
-<body>
+<body class="dark">
     <div class="main flex justify-center items-center w-full h-screen">
         <div id="clock">
-            <div class="text-center text-3xl font-bold m-2" id="time">
+            <div class="text-center text-6xl font-bold m-2 select-none" id="time">
                 Time Loading
             </div>
-            <div class="text-center text-xl" id="date">
+            <div class="text-center text-4xl select-none" id="date">
                 Date Loading
             </div>
         </div>
     </div>
+    <script src="./theme.js"></script>
     <script>
         function currentTime() {
             let date = new Date();
